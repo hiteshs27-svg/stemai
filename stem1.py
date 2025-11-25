@@ -2,7 +2,7 @@ import google.generativeai as genai
 import streamlit as st
 st.title("AI")
 
-genai.configure(api_key='TBD')
+genai.configure(api_key=st.secrets["GENAI_API_KEY"])
 model = genai.GenerativeModel('gemini-2.5-pro')
 
 uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
@@ -33,5 +33,6 @@ if uploaded_image:
         )
 
     st.write(f"AI: {response.text}")
+
 
 
