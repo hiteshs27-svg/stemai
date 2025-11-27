@@ -2,7 +2,7 @@ import google.generativeai as genai
 import streamlit as st
 st.title("AI")
 
-genai.configure(api_key=st.secrets["GENAI_API_KEY"])
+genai.configure(api_key=st.secrets["AIzaSyAZ4aac1N6hplwojukthTw16QJq5PiGyjM"])
 model = genai.GenerativeModel('gemini-2.5-pro')
 
 uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
@@ -19,7 +19,7 @@ prompt = (
     "- Uneven color\n\n"
     "Tasks:\n1. Determine whether the food likely has pesticides, whether it is waxed, and whether it is ripe or rotten.\n"
     "2. Write a 30-word paragraph explaining how healthy or unhealthy the food appears based on visual clues.\n"
-    "3. provide percentage estimates for Rotten, Ripe, Pesticides, and Wax, be exact.\n"
+    "3. provide percentage estimates for Rotten, Ripe, Pesticides, and Wax, be exact, dont give me simple answers like 75 80, give me more accurate, like 76 or 67..\n"
 )
 
 contents = [{"text": prompt}]
@@ -33,6 +33,7 @@ if uploaded_image:
         )
 
     st.write(f"AI: {response.text}")
+
 
 
 
